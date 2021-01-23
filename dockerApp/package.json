@@ -1,0 +1,11 @@
+{
+  "name": "dockerApp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "os": "^0.1.1",
+    "pm2": "^4.5.1"
+  }
+}
