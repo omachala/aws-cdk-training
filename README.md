@@ -1,4 +1,9 @@
 # AWS CDK Stacks
+
+Following AWS CDK stacks are results of my AWS proof of concepts. I'm trying to keep the stacks as simple and straightforward as possible for quick reference in the future.
+
+For the production code use the [Construct pattern](https://docs.aws.amazon.com/cdk/latest/guide/constructs.html).
+
 ## Fargate Stack
 - ECS fargate
 - simple dockerized nodeJS server
