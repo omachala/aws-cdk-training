@@ -141,6 +141,17 @@
     "@aws-cdk/cx-api" "1.85.0"
     constructs "^3.2.0"
 
+"@aws-cdk/aws-cloudfront-origins@1.85.0":
+  version "1.85.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-cloudfront-origins/-/aws-cloudfront-origins-1.85.0.tgz#ee9026f4f3346709945b8eef394ce324dca53da9"
+  integrity sha512-smK+tPxkTaiDfc3GtLsJDcBuhWH6eX2ngMwXmpf9iTLDAA2i6MJb/Ij3QOOWFSkcCjtQTCQD/58BwMRLog1oYQ==
+  dependencies:
+    "@aws-cdk/aws-cloudfront" "1.85.0"
+    "@aws-cdk/aws-elasticloadbalancingv2" "1.85.0"
+    "@aws-cdk/aws-s3" "1.85.0"
+    "@aws-cdk/core" "1.85.0"
+    constructs "^3.2.0"
+
 "@aws-cdk/aws-cloudfront@1.85.0":
   version "1.85.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-cloudfront/-/aws-cloudfront-1.85.0.tgz#aac11c305ee643db3c06d79c450bfc9fda7d76cb"
@@ -198,6 +209,23 @@
     "@aws-cdk/core" "1.85.0"
     constructs "^3.2.0"
 
+"@aws-cdk/aws-codedeploy@1.85.0":
+  version "1.85.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-codedeploy/-/aws-codedeploy-1.85.0.tgz#d9b812e82b268cd6f61df2b1a3c1b94702f8dbfc"
+  integrity sha512-a7H5gDLoux6UCCL+rQmlE/UC6Pmrg9/kWJ4yglZx1ztW0bq37D7beqTxAo0C4ZmjCAe/kYlY/oYSiVQTB+DDjA==
+  dependencies:
+    "@aws-cdk/aws-autoscaling" "1.85.0"
+    "@aws-cdk/aws-cloudwatch" "1.85.0"
+    "@aws-cdk/aws-ec2" "1.85.0"
+    "@aws-cdk/aws-elasticloadbalancing" "1.85.0"
+    "@aws-cdk/aws-elasticloadbalancingv2" "1.85.0"
+    "@aws-cdk/aws-iam" "1.85.0"
+    "@aws-cdk/aws-lambda" "1.85.0"
+    "@aws-cdk/aws-s3" "1.85.0"
+    "@aws-cdk/core" "1.85.0"
+    "@aws-cdk/custom-resources" "1.85.0"
+    constructs "^3.2.0"
+
 "@aws-cdk/aws-codeguruprofiler@1.85.0":
   version "1.85.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-codeguruprofiler/-/aws-codeguruprofiler-1.85.0.tgz#e05a333252155bd48177e5448bfc4c20a8e523eb"
@@ -205,6 +233,32 @@
   dependencies:
     "@aws-cdk/aws-iam" "1.85.0"
     "@aws-cdk/core" "1.85.0"
+    constructs "^3.2.0"
+
+"@aws-cdk/aws-codepipeline-actions@1.85.0":
+  version "1.85.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-codepipeline-actions/-/aws-codepipeline-actions-1.85.0.tgz#e6a7f14506d5cd7a2736867ea53a458907cc37c3"
+  integrity sha512-u0LI63s3df/Yo7zIyunfRGUk+MF/KWtKjpb91bqhJTIyVgK+I+sIx0q6KrnQhQ6onNZXVOd+r6aQ5uaSqzGGPg==
+  dependencies:
+    "@aws-cdk/aws-cloudformation" "1.85.0"
+    "@aws-cdk/aws-codebuild" "1.85.0"
+    "@aws-cdk/aws-codecommit" "1.85.0"
+    "@aws-cdk/aws-codedeploy" "1.85.0"
+    "@aws-cdk/aws-codepipeline" "1.85.0"
+    "@aws-cdk/aws-ec2" "1.85.0"
+    "@aws-cdk/aws-ecr" "1.85.0"
+    "@aws-cdk/aws-ecs" "1.85.0"
+    "@aws-cdk/aws-events" "1.85.0"
+    "@aws-cdk/aws-events-targets" "1.85.0"
+    "@aws-cdk/aws-iam" "1.85.0"
+    "@aws-cdk/aws-lambda" "1.85.0"
+    "@aws-cdk/aws-s3" "1.85.0"
+    "@aws-cdk/aws-servicecatalog" "1.85.0"
+    "@aws-cdk/aws-sns" "1.85.0"
+    "@aws-cdk/aws-sns-subscriptions" "1.85.0"
+    "@aws-cdk/aws-stepfunctions" "1.85.0"
+    "@aws-cdk/core" "1.85.0"
+    case "1.6.3"
     constructs "^3.2.0"
 
 "@aws-cdk/aws-codepipeline@1.85.0":
@@ -561,6 +615,14 @@
     "@aws-cdk/aws-sam" "1.85.0"
     "@aws-cdk/core" "1.85.0"
     "@aws-cdk/cx-api" "1.85.0"
+    constructs "^3.2.0"
+
+"@aws-cdk/aws-servicecatalog@1.85.0":
+  version "1.85.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-servicecatalog/-/aws-servicecatalog-1.85.0.tgz#d8234fe052ea0f0d9f911253c4cc04410f045039"
+  integrity sha512-GWK7CIBDUenHdD9Q3RFDEV7RRA+ooZSw6VXURqDXRyt42HHch32+FzDn43k4RTSFGEzY9lVJaL0afB6Uh692TQ==
+  dependencies:
+    "@aws-cdk/core" "1.85.0"
     constructs "^3.2.0"
 
 "@aws-cdk/aws-servicediscovery@1.85.0":
@@ -1773,6 +1835,11 @@ capture-exit@^2.0.0:
   integrity sha512-PiT/hQmTonHhl/HFGN+Lx3JJUznrVYJ3+AQsnthneZbvW7x+f08Tk7yLJTLEOUvBTbduLeeBkxEaYXUOUrRq6g==
   dependencies:
     rsvp "^4.8.4"
+
+case@1.6.3:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
+  integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
 caseless@~0.12.0:
   version "0.12.0"

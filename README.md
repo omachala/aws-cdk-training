@@ -17,6 +17,19 @@
 
 `yarn cdk deploy ApiGatewayStack`
 
+## CodePipeline Stack
+I'm using for Gatsby site build and deploy
+- CodePipeline
+- CodeBuild (source / build / deploy )
+    - Github source
+    - build
+    - deploy `/public` to S3 bucket
+    - Cloudfront invalidation
+- Cloudfront distribution
+- HTTPS certificate and Route53 alias
+
+`yarn cdk deploy CodeBuildStack`
+
 ### Useful commands
 
  * `yarn run build`     compile typescript to js
