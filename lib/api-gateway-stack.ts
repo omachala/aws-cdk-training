@@ -2,7 +2,7 @@ import {
   AwsIntegration,
   MethodOptions,
   PassthroughBehavior,
-  RestApi,
+  RestApi
 } from "@aws-cdk/aws-apigateway";
 import { Certificate } from "@aws-cdk/aws-certificatemanager";
 import {
@@ -10,15 +10,14 @@ import {
   Policy,
   PolicyStatement,
   Role,
-  ServicePrincipal,
+  ServicePrincipal
 } from "@aws-cdk/aws-iam";
 import { ARecord, HostedZone, RecordTarget } from "@aws-cdk/aws-route53";
 import { ApiGateway } from "@aws-cdk/aws-route53-targets";
 import { Queue } from "@aws-cdk/aws-sqs";
-import * as cdk from "@aws-cdk/core";
-import { Construct, StackProps } from "@aws-cdk/core";
+import { Construct, Stack, StackProps } from '@aws-cdk/core';
 
-export class ApiGatewayStack extends cdk.Stack {
+export class ApiGatewayStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
@@ -87,7 +86,7 @@ export class ApiGatewayStack extends cdk.Stack {
 
     // --- CUSTOM DOMAIN ROUTING ---
 
-    // Load certificate for my domain (needs to be *.domain.tld for subdomain)
+    // Load certificate for the domain (needs to be *.domain.tld for subdomain)
     const certificate = Certificate.fromCertificateArn(
       this,
       `CdkCertificate`,

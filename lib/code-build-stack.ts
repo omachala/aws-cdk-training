@@ -21,7 +21,7 @@ import { PolicyStatement } from "@aws-cdk/aws-iam";
 import { ARecord, HostedZone, RecordTarget } from "@aws-cdk/aws-route53";
 import { CloudFrontTarget } from "@aws-cdk/aws-route53-targets";
 import { Bucket } from "@aws-cdk/aws-s3";
-import { Construct, SecretValue, Stack, StackProps } from "@aws-cdk/core";
+import { Construct, SecretValue, Stack, StackProps, RemovalPolicy } from '@aws-cdk/core';
 
 export class CodeBuildStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -52,10 +52,10 @@ export class CodeBuildStack extends Stack {
     const buildOutput = new Artifact("CdkBuildOutput");
 
     const targetBucket = new Bucket(this, "CdkBucket", {
+      removalPolicy: RemovalPolicy.DESTROY,
       publicReadAccess: true,
     });
-
-    const zone = HostedZone.fromLookup(this, "CdkZone", {
+    const zone = HostedZone.fromLookup(this, "CdkiklZone", {
       domainName: String(process.env.CODEBUILD_TARGET_DOMAIN),
     });
 

@@ -23,7 +23,7 @@ For the production code use the [Construct pattern](https://docs.aws.amazon.com/
 `yarn cdk deploy ApiGatewayStack`
 
 ## CodePipeline Stack
-I'm using for Gatsby site build and deploy
+I use for Gatsby site build and deploy
 - CodePipeline
 - CodeBuild (source / build / deploy )
     - Github source
@@ -34,6 +34,20 @@ I'm using for Gatsby site build and deploy
 - HTTPS certificate and Route53 alias
 
 `yarn cdk deploy CodeBuildStack`
+
+## CRUD Stack
+- ApiGateway
+- Custom Lambda TokenAuthorizer
+- DynamoDB
+- Lambdas
+    - get-all
+    - create
+    - get-one
+    - update-one
+    - delete-one
+
+`yarn cdk deploy  ApiLambdaCrudDynamoDBStack`
+
 
 ### Useful commands
 
