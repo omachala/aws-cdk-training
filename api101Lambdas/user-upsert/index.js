@@ -1,6 +1,7 @@
 const AWS = require("aws-sdk");
 const db = new AWS.DynamoDB.DocumentClient();
 const TABLE_NAME = process.env.TABLE_NAME || "";
+const CACHE_TABLE_NAME = process.env.CACHE_TABLE_NAME || "";
 
 exports.handler = async function (event) {
   const headers = {
@@ -61,6 +62,10 @@ exports.handler = async function (event) {
 
   try {
     await db.update(params).promise();
+
+    // delete cache
+    await db.delete({ TableName: CACHE_TABLE_NAME, Key: { id: 0 } }).promise();
+
     return { statusCode: 201, body: JSON.stringify({ done: true }), headers };
   } catch (dbError) {
     return { statusCode: 500, body: JSON.stringify(dbError), headers };

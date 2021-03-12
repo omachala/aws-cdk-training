@@ -31,19 +31,29 @@ export class Api101Stack extends Stack {
         type: AttributeType.STRING,
       },
       tableName: "votes",
-      removalPolicy: RemovalPolicy.DESTROY, // NOT recommended for production code
+      removalPolicy: RemovalPolicy.DESTROY,
     });
 
-    const upsertLambda = new Function(this, "Api101Upsert", {
+    const cacheTable = new Table(this, "Api101VotesCache", {
+      partitionKey: {
+        name: "id",
+        type: AttributeType.NUMBER,
+      },
+      tableName: "votes-cache",
+      removalPolicy: RemovalPolicy.DESTROY,
+    });
+
+    const userUpsertLambda = new Function(this, "Api101Upsert", {
       code: new AssetCode("api101Lambdas/user-upsert"),
       handler: "index.handler",
       runtime: Runtime.NODEJS_12_X,
       environment: {
         TABLE_NAME: dynamoTable.tableName,
+        CACHE_TABLE_NAME: cacheTable.tableName
       },
     });
 
-    const getOneLambda = new Function(this, "Api101UpsertGetOne", {
+    const userGetLambda = new Function(this, "Api101UpsertGetOne", {
       code: new AssetCode("api101Lambdas/user-get"),
       handler: "index.handler",
       runtime: Runtime.NODEJS_12_X,
@@ -58,23 +68,26 @@ export class Api101Stack extends Stack {
       runtime: Runtime.NODEJS_12_X,
       environment: {
         TABLE_NAME: dynamoTable.tableName,
+        CACHE_TABLE_NAME: cacheTable.tableName,
         PRIMARY_KEY: "id",
       },
     });
 
     dynamoTable.grantReadData(getAllLambda);
-    dynamoTable.grantReadWriteData(upsertLambda);
+    dynamoTable.grantReadWriteData(userUpsertLambda);
+    cacheTable.grantReadWriteData(getAllLambda);
+    cacheTable.grantReadWriteData(userUpsertLambda);
 
     // Need to create index for userId in order to query data by userId
     dynamoTable.addGlobalSecondaryIndex({
-      indexName: 'userIdIndex',
+      indexName: "userIdIndex",
       partitionKey: {
-        name: 'userId',
-        type: AttributeType.STRING 
-      }
+        name: "userId",
+        type: AttributeType.STRING,
+      },
     });
 
-    dynamoTable.grantReadData(getOneLambda);
+    dynamoTable.grantReadData(userGetLambda);
 
     const api = new RestApi(this, "Api101Rest", {
       restApiName: "Api101Rest",
@@ -104,10 +117,10 @@ export class Api101Stack extends Stack {
 
     const userResource = resources.addResource("user");
 
-    const upsertIntegration = new LambdaIntegration(upsertLambda);
+    const upsertIntegration = new LambdaIntegration(userUpsertLambda);
     userResource.addMethod("POST", upsertIntegration, { authorizer });
 
-    const getOneIntegration = new LambdaIntegration(getOneLambda);
+    const getOneIntegration = new LambdaIntegration(userGetLambda);
     userResource.addMethod("GET", getOneIntegration, { authorizer });
 
     // --- CUSTOM DOMAIN ROUTING ---

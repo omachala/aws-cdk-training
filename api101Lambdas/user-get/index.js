@@ -16,14 +16,6 @@ exports.handler = async (event) => {
     };
   }
 
-  // const params = {
-  //   TableName: TABLE_NAME,
-  //   Key: {
-  //     userId: requestedItemId,
-  //   },
-  //   RequestItems: []
-  // };
-
   const params = {
     TableName : TABLE_NAME,
     IndexName : 'userIdIndex',
